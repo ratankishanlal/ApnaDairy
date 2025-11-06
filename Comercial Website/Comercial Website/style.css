@@ -1,0 +1,196 @@
+body{
+ font-family: "Roboto", sans-serif;
+ margin: 0;
+ padding: 0;
+}
+.navbar{
+    margin-top: 0;
+    height:4rem;
+    width:auto;
+    background-color: #2e8bc0;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2px;
+}
+.home{
+   width: 15%;
+   height: 3rem;
+   /* background-color: red; */
+   color: #fff;
+   display: flex;
+   justify-content:center;
+   align-items: center;
+   font-size: 1.5rem;
+}
+
+.home>a{
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #fff;
+    margin-left: 1rem;
+}
+.home>a:hover{
+    color: #b1d4e0;
+}
+.amenties{
+    width: 50%;
+    height: 3rem;
+    /* background-color: green; */
+    color: #fff;
+   display: flex;
+   justify-content:space-evenly;
+   align-items: center;
+   font-size: 1.2rem;
+   font-weight: 500;
+   
+}
+.opti> a{
+      text-decoration: none;
+      color: #fff;
+}
+.opti> a:hover{
+      color: #b1d4e0;
+      
+}
+.login{
+   width: 25%;
+   height: 3rem;
+   /* background-color: blue; */
+   display: flex;
+   justify-content:center;
+   align-items: center;
+}
+button{
+    height: 2rem;
+    width: 8rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+    border-radius: 100px;
+    background-color:#145da0 ;
+    color: #fff;
+}
+button:hover{
+    background-color: #fff;
+    color: #145da0;
+}
+.main{
+    height:100%;
+    width:auto;
+    margin-bottom: 0;
+    background-color: red;
+    background-image: url(milk-milk-stream.jpg);
+    background-size: cover;
+    display: flex;
+}
+
+.left{
+    height:100vh;
+    width: 50%;
+    /* background-color: #fff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right{
+    height:100vh;
+    width: 50%;
+    /* background-color: #fff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 3rem;
+    font-size: 1.5rem;
+    color:#145da0;
+}
+span{
+    color: blue;
+}
+.milk1{
+     height: 100%;
+    width: auto;
+    margin-top: 0;
+    background-image: url(milk-milk-stream.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+   /* justify-content: center; */
+   /* align-items: center; */
+}
+.milk1>h1{
+     display: flex;
+     font-size: 5rem;
+     padding-top: 50px;
+    flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.milk{
+    height: 100vh;
+    width: auto;
+    margin-top: 0;
+    padding-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left1{
+    height:100vh;
+    width: 50%;
+    /* background-color: #fff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.form-container {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 400px;
+      /* height: 90vh; */
+      margin: auto;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #0077cc;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, select, textarea,#submit {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    #submit {
+      background: #0077cc;
+      color: white;
+      border: none;
+      margin-top: 15px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+
+    .right1{
+    height:100vh;
+    width: 50%;
+    /* background-color: #fff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+  

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApnaDairy</title>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo1.png">
+  <link rel="stylesheet" href="demo.css">
+  <style></style>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }
+  from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+  import { getFirestore, collection, addDoc }
+  from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "XXXXXXX",
+    appId: "YOUR_APP_ID"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+
+
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="home"><a href="#home"><i class="fa-solid fa-house"></i> Home</a></div>
+    <div class="amenties">
+      <a href="#milk">Milk</a>
+      <a href="#paneer">Paneer</a>
+      <a href="#ghee">Ghee</a>
+      <a href="#curd">Curd</a>
+      <a href="#chhena">Chhena</a>
+      <a href="#khoya">Khoya</a>
+    </div>
+    <div class="login">
+  <button><a href="login.html" style="text-decoration: none; color:black;">Login</a></button>
+  <button><a href="signup.html" style="text-decoration: none; color:black; margin-left:10px;">Sign Up</a></button>
+</div>
+
+  </div>
+
+  <div id="home" class="main">
+        <div class="left"> <img src="balta.png" alt="image" height="600px" width="400px"></div>
+        <div class="right">
+            <h2></h2>
+            <p>Welcome to <b>ApnaDairy</b>, your trusted source for pure and fresh dairy. We bring you farm-fresh
+                <span>milk, paneer, ghee, curd, chhena </span>and <span>khoya</span> with guaranteed quality and
+                hygiene. Our mission is to provide healthy, natural dairy products that nurture your family with
+                authentic taste and complete nutrition every day.
+            </p>
+        </div>
+    </div>
+
+  <!-- Milk Section -->
+  <section id="milk">
+
+    <div class="form-container">
+      <h2>Order Milk</h2>
+      <form>
+        <label for="milk-type">Select Milk</label>
+        <select id="milk-type" required>
+          <option value="">--Choose--</option>
+          <option value="cow">Cow Milk</option>
+          <option value="buffalo">Buffalo Milk</option>
+        </select>
+        <label for="milk-qty">Quantity (Liters)</label>
+        <input type="number" id="milk-qty" min="1" required>
+        <label for="milk-frequency">Delivery Frequency</label>
+        <select id="milk-frequency">
+          <option value="one-time">One-time</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+        </select>
+        <label for="milk-payment">Payment Method</label>
+        <select id="milk-payment" required>
+          <option value="cod">Cash on Delivery</option>
+          <option value="upi">UPI</option>
+          <option value="card">Card</option>
+        </select>
+        <button id="submit">Place Order</button>
+      </form>
+      <p class="price-info">Cow Milk ₹60/L | Buffalo Milk ₹70/L</p>
+
+    </div>
+    <div class="milkimg"><img src="balta.png" alt="image" height="600px" width="400px"></div>
+  </section>
+
+  <!-- Paneer Section -->
+
+  <section id="paneer">
+
+    <div class="form-container">
+      <h2>Order Paneer</h2>
+      <form>
+        <label for="paneer-qty">Quantity (Kg)</label>
+        <input type="number" id="paneer-qty" min="1" required>
+        <label for="paneer-payment">Payment Method</label>
+        <select id="paneer-payment" required>
+          <option value="cod">Cash on Delivery</option>
+          <option value="upi">UPI</option>
+          <option value="card">Card</option>
+        </select>
+        <button id="submit">Place Order</button>
+      </form>
+      <p class="price-info">Paneer ₹320/Kg</p>
+
+    </div>
+    <div class="milkimg"><img src="image/Paneer1.png" alt="image" height="600px" width="600px"></div>
+  </section>
+
+  <!-- Ghee Section -->
+  <section id="ghee">
+    <div class="form-container">
+      <h2>Order Ghee</h2>
+      <form>
+        <label for="milk-type">Select Ghee</label>
+        <select id="milk-type" required>
+          <option value="">--Choose--</option>
+          <option value="cow">Cow Ghee</option>
+          <option value="buffalo">Buffalo Ghee</option>
+        </select>
+        <label for="ghee-qty">Quantity (Kg)</label>
+        <input type="number" id="ghee-qty" min="1" required>
+        <label for="ghee-payment">Payment Method</label>
+        <select id="ghee-payment" required>
+          <option value="cod">Cash on Delivery</option>
+          <option value="upi">UPI</option>
+          <option value="card">Card</option>
+        </select>
+        <button id="submit">Place Order</button>
+      </form>
+      <p class="price-info">Cow Ghee ₹700/Kg | Buffalo Ghee ₹800/Kg</p>
+
+    </div>
+    <div class="milkimg"><img src="image/ghee2.png" alt="image" height="400px" width="400px"></div>
+  </section>
+
+  <!-- Curd Section -->
+  <section id="curd">
+    <div class="form-container">
+      <h2>Order Curd</h2>
+      <form>
+        <label for="milk-type">Select Curd</label>
+        <select id="milk-type" required>
+          <option value="">--Choose--</option>
+          <option value="cow">Cow Curd</option>
+          <option value="buffalo">Buffalo Curd</option>
+        </select>
+        <label for="curd-qty">Quantity (Kg)</label>
+        <input type="number" id="curd-qty" min="1" required>
+        <label for="curd-payment">Payment Method</label>
+        <select id="curd-payment" required>
+          <option value="cod">Cash on Delivery</option>
+          <option value="upi">UPI</option>
+          <option value="card">Card</option>
+        </select>
+        <button id="submit">Place Order</button>
+      </form>
+      <p class="price-info">Cow Curd ₹50/Kg | Buffalo Curd ₹60/Kg</p>
+
+    </div>
+    <div class="milkimg"><img src="image/curd.png" alt="image" height="600px" width="600px"></div>
+  </section>
+
+  <!-- Chhena Section -->
+  <section id="chhena">
+    <div class="form-container">
+      <h2>Order Chhena</h2>
+      <form>
+        <label for="chhena-qty">Quantity (Kg)</label>
+        <input type="number" id="chhena-qty" min="1" required>
+        <label for="chhena-payment">Payment Method</label>
+        <select id="chhena-payment" required>
+          <option value="cod">Cash on Delivery</option>
+          <option value="upi">UPI</option>
+          <option value="card">Card</option>
+        </select>
+        <button id="submit">Place Order</button>
+      </form>
+      <p class="price-info">Chhena ₹350/Kg</p>
+    </div>
+    <div class="milkimg"><img src="image/chhena.png" alt="image" height="350px" width="500px" style="border-radius: 50%;"></div>
+  </section>
+
+  <!-- Khoya Section -->
+  <section id="khoya">
+    <div class="form-container">
+      <h2>Order Khoya</h2>
+      <form>
+        <label for="khoya-qty">Quantity (Kg)</label>
+        <input type="number" id="khoya-qty" min="1" required>
+        <label for="khoya-payment">Payment Method</label>
+        <select id="khoya-payment" required>
+          <option value="cod">Cash on Delivery</option>
+          <option value="upi">UPI</option>
+          <option value="card">Card</option>
+        </select>
+        <button id="submit">Place Order</button>
+      </form>
+      <p class="price-info">Khoya ₹400/Kg</p>
+    </div>
+    <div class="milkimg"><img src="image/Khoya2.png" alt="image" height="500px" width="500px" ></div>
+  </section>
+    <footer class="footer">
+    <div class="footer-container">
+
+      <!-- About -->
+      <div class="footer-col">
+        <h3>About</h3>
+        <p>We provide 100% pure and fresh dairy products straight from our farms to your home.
+        Enjoy the goodness of health with ApnaDairy.</p>
+      </div>
+
+      <!-- Links -->
+      <div class="footer-col">
+        <h3>Links</h3>
+        <ul>
+          <li><a href="#"><ion-icon name="chevron-forward-outline"></ion-icon>Home</a></li>
+          <li><a href="#"><ion-icon name="chevron-forward-outline"></ion-icon>About</a></li>
+          <li><a href="#"><ion-icon name="chevron-forward-outline"></ion-icon>Services</a></li>
+          <li><a href="#"><ion-icon name="chevron-forward-outline"></ion-icon>Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#"><ion-icon name="chevron-forward-outline"></ion-icon>Fresh Milk</a></li>
+          <li><a href="#"><ion-icon name="chevron-forward-outline"></ion-icon>Paneer & Ghee</a></li>
+          <li><a href="#"><ion-icon name="chevron-forward-outline"></ion-icon>Curd & Butter</a></li>
+          <li><a href="#"><ion-icon name="chevron-forward-outline"></ion-icon>Home Delivery</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h3>Have a Question?</h3>
+        <p><ion-icon name="location-outline"></ion-icon> Banda, India</p>
+        <p><ion-icon name="call-outline"></ion-icon> <a href="tel:+918996962829">+91 8996962829</a></p>
+        <p><ion-icon name="mail-outline"></ion-icon> <a href="mailto:kishan123@gmail.com">kishan123@gmail.com</a></p>
+      </div>
+
+    </div>
+
+    <!-- Social Media Icons -->
+    <div class="social-links">
+  <a href="https://www.instagram.com" target="_blank" title="Instagram">
+    <ion-icon name="logo-instagram"></ion-icon>
+  </a>
+  <a href="https://discord.gg" target="_blank" title="Discord">
+    <ion-icon name="logo-discord"></ion-icon>
+  </a>
+  <a href="https://www.youtube.com" target="_blank" title="YouTube">
+    <ion-icon name="logo-youtube"></ion-icon>
+  </a>
+</div>
+
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      Copyright © 2025 All rights reserved | Made with by ApnaDairy
+    </div>
+  </footer>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const loginDiv = document.querySelector(".login");
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const userName = localStorage.getItem("userName");
+
+    function showLoginPopup() {
+      const popup = document.createElement("div");
+      popup.innerHTML = `
+        <div id="loginPopup" style="
+          position: fixed;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          background: rgba(0,0,0,0.6);
+          display: flex; align-items: center; justify-content: center;
+          z-index: 9999;
+        ">
+          <div style="
+            background: #fff;
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+          ">
+            <h2 style="margin-bottom: 10px;">Login Required</h2>
+            <p style="margin-bottom: 20px;">Please log in again to continue 🥛</p>
+            <button id="loginAgainBtn" style="
+              padding: 10px 20px;
+              border: none;
+              background: #ff7043;
+              color: white;
+              border-radius: 8px;
+              cursor: pointer;
+              font-weight: bold;
+            ">Login</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(popup);
+
+      document.getElementById("loginAgainBtn").addEventListener("click", function () {
+        document.getElementById("loginPopup").remove();
+        window.location.href = "login.html";
+      });
+    }
+
+    if (isLoggedIn === "true" && userName) {
+      // Show Logout + Welcome Name
+      loginDiv.innerHTML = `
+        <button id="logoutBtn" style="color:black;">Logout</button>
+        <span style="margin-left:10px; font-weight:bold; color:black;">Welcome, ${userName}</span>
+      `;
+
+      // Logout button click
+      document.getElementById("logoutBtn").addEventListener("click", function () {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("userEmail");
+        alert("👋 You have logged out successfully.");
+        loginDiv.innerHTML = `<button><a href="login.html" style="text-decoration: none; color:black;">Login</a></button>`;
+        showLoginPopup();
+      });
+    }
+  });
+</script>
+
+<!-- Order Placed Popup -->
+<div id="orderPopup" style="
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(3px);
+">
+  <div style="
+    background: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+    animation: popupFade 0.3s ease;
+  ">
+    <ion-icon name="checkmark-circle-outline" style="font-size:60px; color:#28a745;"></ion-icon>
+    <h2 style="margin:15px 0 10px 0; color:#28a745;">Order Placed!</h2>
+    <p style="font-size:16px; color:#444;">Thank you for ordering with <b>ApnaDairy</b> 🥛</p>
+    <button id="okBtn" style="
+      margin-top:20px;
+      padding:10px 25px;
+      border:none;
+      background:#28a745;
+      color:white;
+      font-weight:bold;
+      border-radius:8px;
+      cursor:pointer;
+    ">OK</button>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Product prices per liter/kg
+  const prices = {
+    milk: { cow: 60, buffalo: 70 },
+    ghee: { cow: 700, buffalo: 800 },
+    paneer: { normal: 320 },
+    curd: { cow: 100, buffalo: 120 },
+    chhena: { normal: 350 },
+    khoya: { normal: 400 }
+  };
+
+  // Custom popup
+  function showPopup(message) {
+    const popup = document.createElement("div");
+    popup.innerHTML = `
+      <div id="popupOverlay" style="
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: flex; justify-content: center; align-items: center;
+        z-index: 9999;
+      ">
+        <div style="
+          background: #fff;
+          padding: 25px 35px;
+          border-radius: 12px;
+          text-align: center;
+          box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+          animation: fadeIn 0.3s ease;
+        ">
+          <h2 style="color: green;">${message}</h2>
+          <button id="closePopup" style="
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+          ">OK</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(popup);
+
+    document.getElementById("closePopup").addEventListener("click", () => {
+      document.getElementById("popupOverlay").remove();
+    });
+  }
+
+  // Handle all order forms
+  const forms = document.querySelectorAll("section form");
+  forms.forEach(form => {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const sectionId = this.closest("section").id;
+      let qty = this.querySelector("input[type='number']").value;
+      qty = parseFloat(qty);
+      if (!qty || qty <= 0) {
+        alert("Please enter a valid quantity!");
+        return;
+      }
+
+      let total = 0;
+      let productName = sectionId.charAt(0).toUpperCase() + sectionId.slice(1);
+      let type = "normal";
+
+      // Identify cow/buffalo selection if available
+      const selectType = this.querySelector("select[id*='milk-type']");
+      if (selectType) type = selectType.value || "cow";
+
+      // Set total price
+      if (prices[sectionId]) {
+        if (prices[sectionId][type]) {
+          total = prices[sectionId][type] * qty;
+        } else {
+          total = prices[sectionId].normal * qty;
+        }
+      }
+
+      // Show popup with total
+      showPopup(`✅ ${productName} Order Placed Successfully!<br>Total: ₹${total.toFixed(2)}`);
+      this.reset();
+    });
+  });
+});
+
+</script>
+
+
+</body>
+</html>
